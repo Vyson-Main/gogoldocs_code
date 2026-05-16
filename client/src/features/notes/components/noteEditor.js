@@ -1,5 +1,4 @@
-// ── Note Editor Component ─────────────────────────────────────────────────────
-import { notesStore }     from '/src/utils/store.js';
+import { notesStore, securityStore } from '/src/utils/store.js';
 import { notesService }   from '/src/features/notes/services/notesService.js';
 import { createAutosave } from '/src/utils/autosave.js';
 import { getNoteWordCount, formatDate } from '/src/features/notes/utils/noteHelpers.js';
@@ -33,13 +32,10 @@ export function mountEditor(container) {
     const secureBtn = note.isSecure
       ? `<button class="toolbar__btn toolbar__btn--secure" id="tb-remove-lock">${ICON_LOCK} Remove Lock</button>`
       : `<button class="toolbar__btn" id="tb-secure">${ICON_LOCK} Secure Note</button>`;
-
     const savedBadge = savedVisible
       ? `<div class="toolbar__saved"><span class="toolbar__saved-dot"></span>Saved</div><div class="toolbar__divider"></div>`
       : '';
-
-    const deleteDisabled = isLocked ? 'disabled title="Unlock the note first to delete"' : '';
-
+    const deleteDisabled = isLocked ? 'disabled' : '';
     return `
       <div class="toolbar">
         ${secureBtn}
@@ -94,7 +90,8 @@ export function mountEditor(container) {
   }
 
   function render() {
-    const { items, activeId, unlockedIds, failedAttempts } = notesStore.getState();
+    const { items, activeId }             = notesStore.getState();
+    const { unlockedIds, failedAttempts } = securityStore.getState();
     const note = activeId ? items.find(n => n.id === activeId) : null;
 
     if (!note) {
@@ -144,7 +141,6 @@ export function mountEditor(container) {
     const bodyInput  = container.querySelector('#editor-body');
     const wcEl       = container.querySelector('#editor-wc');
     if (!titleInput || !bodyInput) return;
-
     titleInput.addEventListener('input', () => {
       autosave.save(note.id, titleInput.value, bodyInput.value);
     });
@@ -155,27 +151,20 @@ export function mountEditor(container) {
   }
 
   function bindToolbarEvents(note, isUnlocked) {
-    const secureBtn     = container.querySelector('#tb-secure');
-    const removeLockBtn = container.querySelector('#tb-remove-lock');
-    const deleteBtn     = container.querySelector('#tb-delete');
-
-    secureBtn?.addEventListener('click', () => openSecureNoteModal(note.id));
-    removeLockBtn?.addEventListener('click', () => openRemoveSecurityModal(note.id));
-    deleteBtn?.addEventListener('click', () => openDeleteNoteModal(note, isUnlocked));
+    container.querySelector('#tb-secure')?.addEventListener('click', () => openSecureNoteModal(note.id));
+    container.querySelector('#tb-remove-lock')?.addEventListener('click', () => openRemoveSecurityModal(note.id));
+    container.querySelector('#tb-delete')?.addEventListener('click', () => openDeleteNoteModal(note, isUnlocked));
   }
 
   function bindLockedEvents(note) {
-    const pwInput       = container.querySelector('#unlock-pw');
-    const errorEl       = container.querySelector('#unlock-error');
-    const unlockBtn     = container.querySelector('#unlock-btn');
-    const removeLockBtn = container.querySelector('#tb-remove-lock');
-    const deleteBtn     = container.querySelector('#tb-delete');
+    const pwInput   = container.querySelector('#unlock-pw');
+    const errorEl   = container.querySelector('#unlock-error');
+    const unlockBtn = container.querySelector('#unlock-btn');
 
-    removeLockBtn?.addEventListener('click', () => openRemoveSecurityModal(note.id));
-    deleteBtn?.addEventListener('click', () => openDeleteNoteModal(note, false));
+    container.querySelector('#tb-remove-lock')?.addEventListener('click', () => openRemoveSecurityModal(note.id));
+    container.querySelector('#tb-delete')?.addEventListener('click', () => openDeleteNoteModal(note, false));
 
     if (!pwInput || !unlockBtn) return;
-
     pwInput.focus();
     pwInput.addEventListener('input', () => { errorEl.style.display = 'none'; });
     pwInput.addEventListener('keydown', e => { if (e.key === 'Enter') handleUnlock(); });
@@ -204,5 +193,6 @@ export function mountEditor(container) {
   }
 
   notesStore.subscribe(render);
+  securityStore.subscribe(render);
   render();
 }
