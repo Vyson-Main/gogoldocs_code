@@ -32,12 +32,8 @@
   <!-- Runtime config: VITE_API_URL is set in Vercel environment variables -->
   <script>
     window.__ENV__ = {
-      API_BASE_URL: '__VITE_API_URL__',
+      API_BASE_URL: 'https://gogoldocs-code.onrender.com/api',
     };
-    // If placeholder was not replaced (local dev), fall back to localhost
-    if (window.__ENV__.API_BASE_URL === '__VITE_API_URL__') {
-      window.__ENV__.API_BASE_URL = 'https://gogoldocs-code.onrender.com';
-    }
   </script>
 </head>
 <body>
