@@ -1,0 +1,107 @@
+/* ── Security Feature Styles ─────────────────────────────────────────────────
+   Styles for: locked note state, password modals, strength indicator.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* ── Locked state panel ─────────────────────────────────────────────────────── */
+.security-locked {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 24px;
+}
+
+.security-locked__ring {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-xl);
+  background: var(--color-gold-bg);
+  border: 2px solid var(--color-gold-border);
+  box-shadow: 0 4px 20px rgba(200,168,50,.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+}
+
+.security-locked__text {
+  text-align: center;
+}
+.security-locked__text h2 {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  color: var(--color-text-primary);
+  margin-bottom: 6px;
+}
+.security-locked__text p {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.security-locked__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 260px;
+}
+
+.security-locked__input {
+  text-align: center;
+  letter-spacing: .15em;
+}
+
+.security-locked__error {
+  font-size: 12px;
+  text-align: center;
+}
+
+.security-locked__attempts {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.security-locked__blocked {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-error);
+  text-align: center;
+}
+
+.security-locked__btn {
+  font-weight: 600;
+  font-size: 13px;
+  padding: 9px 20px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  border: none;
+  transition: opacity var(--transition-base);
+}
+.security-locked__btn:hover   { opacity: 0.88; }
+.security-locked__btn:disabled { opacity: 0.4; pointer-events: none; }
+
+/* ── Password strength bar ──────────────────────────────────────────────────── */
+.security-strength-wrap {
+  margin-top: 6px;
+}
+
+.security-strength-bar-track {
+  height: 3px;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.security-strength-bar {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 300ms ease, background 300ms ease;
+}
+
+.security-strength-label {
+  font-size: 10px;
+  margin-top: 3px;
+  color: var(--color-text-secondary);
+}

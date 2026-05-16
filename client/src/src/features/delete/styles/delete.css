@@ -1,0 +1,41 @@
+/* ── Delete Feature Styles ───────────────────────────────────────────────────
+   Styles specific to the delete confirmation modal and danger actions.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Delete button in toolbar */
+.delete-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  font-size: 12px;
+  font-weight: 500;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.delete-btn:hover:not(:disabled) {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.delete-btn:disabled {
+  opacity: 0.3;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* Warning text in the delete modal */
+.delete-warning {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-bottom: 16px;
+}
+
+.delete-warning strong {
+  color: var(--color-text-primary);
+}
