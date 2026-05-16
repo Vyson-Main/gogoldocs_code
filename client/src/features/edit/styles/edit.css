@@ -1,0 +1,37 @@
+/* ── Edit Feature Styles ─────────────────────────────────────────────────────
+   Styles for the autosave indicator and save-state feedback in the toolbar.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Autosave status badge in toolbar */
+.edit-saved-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--color-success);
+  animation: fadeIn 150ms ease;
+}
+
+.edit-saved-badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-success);
+}
+
+.edit-saving-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+/* Unsaved indicator — pulsing dot */
+.edit-unsaved-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-amber);
+  animation: pulse 1.5s ease-in-out infinite;
+}
