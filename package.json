@@ -1,0 +1,15 @@
+{
+  "name": "gogoldocs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev:server":      "cd server && npm run dev",
+    "dev:client":      "cd client && npx serve . -p 5500",
+    "db:migrate":      "cd server && npm run db:migrate",
+    "db:seed":         "cd server && npm run db:seed",
+    "test:connection": "cd server && npm run test:connection",
+    "install:all":     "npm i && cd server && npm i",
+    "start":           "cd server && npm start",
+    "vercel-build":    "node scripts/inject-env.js"
+  }
+}

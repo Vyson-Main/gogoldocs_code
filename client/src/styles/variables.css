@@ -1,0 +1,118 @@
+/* ── CSS Variables & Design Tokens ─────────────────────────────────────────── */
+:root {
+  /* Typography */
+  --font-serif: "DM Serif Display", Georgia, serif;
+  --font-sans:  "DM Sans", system-ui, sans-serif;
+  --font-mono:  "DM Mono", "Courier New", monospace;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 36px;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 100ms ease;
+  --transition-base: 150ms ease;
+  --transition-slow: 300ms ease;
+
+  /* Z-index layers */
+  --z-modal:   40;
+  --z-toast:   50;
+  --z-tooltip: 60;
+}
+
+/* ── Light Theme ────────────────────────────────────────────────────────────── */
+:root,
+:root.light {
+  --color-bg:           #f5f4f0;
+  --color-bg-elevated:  #ffffff;
+  --color-bg-sidebar:   #f0ede8;
+  --color-bg-toolbar:   #f0ede8;
+  --color-bg-input:     #ffffff;
+  --color-bg-hover:     #ece9e3;
+  --color-bg-active:    #e4e0d8;
+
+  --color-border:       #e2ddd6;
+  --color-border-focus: #c8772a;
+
+  --color-text-primary:   #1c1a16;
+  --color-text-secondary: #6b6560;
+  --color-text-muted:     #9c9288;
+  --color-text-placeholder: #bdb4a8;
+
+  /* Accent — amber */
+  --color-amber:        #c8772a;
+  --color-amber-dim:    #a05f1a;
+  --color-amber-light:  #fff3e0;
+
+  /* Secure/gold palette */
+  --color-gold:         #8b6914;
+  --color-gold-bg:      #fdf6e3;
+  --color-gold-border:  #c8a832;
+
+  /* Status */
+  --color-success:  #16a34a;
+  --color-error:    #dc2626;
+  --color-info:     #2563eb;
+
+  /* Shadows */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:  0 4px 12px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.05);
+  --shadow-lg:  0 12px 32px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.06);
+  --shadow-xl:  0 24px 48px rgba(0,0,0,.16), 0 8px 24px rgba(0,0,0,.08);
+
+  /* Scrollbar */
+  --color-scrollbar: #d0cac2;
+}
+
+/* ── Dark Theme ─────────────────────────────────────────────────────────────── */
+:root.dark {
+  --color-bg:           #0f1117;
+  --color-bg-elevated:  #1c2030;
+  --color-bg-sidebar:   #161a23;
+  --color-bg-toolbar:   #161a23;
+  --color-bg-input:     #1c2030;
+  --color-bg-hover:     #222843;
+  --color-bg-active:    #252c42;
+
+  --color-border:       #1f2638;
+  --color-border-focus: #c8772a;
+
+  --color-text-primary:   #e8e6f0;
+  --color-text-secondary: #8a90a8;
+  --color-text-muted:     #4a5070;
+  --color-text-placeholder: #3a4060;
+
+  --color-amber:        #c8772a;
+  --color-amber-dim:    #a05f1a;
+  --color-amber-light:  #1e1408;
+
+  --color-gold:         #d4af37;
+  --color-gold-bg:      #1e1a0a;
+  --color-gold-border:  #b8942a;
+
+  --color-success:  #22c55e;
+  --color-error:    #f87171;
+  --color-info:     #60a5fa;
+
+  --shadow-sm:  0 1px 3px rgba(0,0,0,.3),  0 1px 2px rgba(0,0,0,.2);
+  --shadow-md:  0 4px 12px rgba(0,0,0,.4), 0 2px 6px rgba(0,0,0,.3);
+  --shadow-lg:  0 12px 32px rgba(0,0,0,.5), 0 4px 12px rgba(0,0,0,.3);
+  --shadow-xl:  0 24px 48px rgba(0,0,0,.6), 0 8px 24px rgba(0,0,0,.4);
+
+  --color-scrollbar: #2a3048;
+}

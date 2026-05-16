@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "name": "gogoldocs",
+  "buildCommand": "node scripts/inject-env.js",
+  "outputDirectory": "client",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
